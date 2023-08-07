@@ -1,107 +1,163 @@
-<!DOCTYPE html>
-
+<!DOCTYPE HTML>
+<!--
+	Phantom by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
 <html>
+	<head>
+		<title>Phantom by HTML5 UP</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+		<!-- Wrapper -->
+			<div id="wrapper">
+				<!-- Header -->
+					<header id="header">
+						<div class="inner">
+							<!-- Logo -->
+								<a href="index.html" class="logo">
+									<span class="symbol"><img src="images/logo.png" alt="" /></span><span class="title">Portfolio</span>
+								</a>
 
-<head>
-	<title>Simple web Development Template</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
+							<!-- Nav -->
+								<nav>
+									<ul>
+										<li><a href="#menu">Menu</a></li>
+									</ul>
+								</nav>
 
-<body>
-	<nav class="navbar background">
-		<ul class="nav-list">
-			<div class="logo">
-				<img src= "logo.png">
+						</div>
+					</header>
+
+				<!-- Menu -->
+					<nav id="menu">
+						<h2>Menu</h2>
+						<ul>
+							<li><a href="index.html">Home</a></li>
+							<li><a href="remote.html">Remote</a></li>
+							<li><a href="LiteKit.html">Lite Kit</a></li>
+							<li><a href="Limo.html">Agilex Limo</a></li>
+							<li><a href="elements.html">Elements</a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+							<!--Top of webpage text-->
+							<header>
+								<h1>My Portfolio</h1>
+								<h2>
+									Robotic Projects
+								</h2>
+							</header>
+							<!--Articles displaying robotic projects-->
+							<section class="tiles">
+								<!--Wireless Arduino Robot-->
+								<article class="style1">
+									<span class="image">
+										<!--Jpeg Image-->
+										<img src="images/pic01.jpg" alt="" />
+									</span>
+									<!--Link it sends users to when clicked on-->
+									<a href="remote.html">
+										<!--Article Title-->
+										<h2>Wireless Arduino Robot</h2>
+										<div class="content">
+											<!--Article Body-->
+											<p>A small personal project to learn more about Arduino and electrical circuitry.</p>
+										</div>
+									</a>
+								</article>
+								<!--Lite Kit-->
+								<article class="style2">
+									<span class="image">
+										<!--Jpeg Image-->
+										<img src="images/Lite Kit Team Photo.jpg" alt="" />
+									</span>
+									<!--Link it sends users to when clicked on-->
+									<a href="LiteKit.html">
+										<!--Article Title-->
+										<h2>Lite Kit</h2>
+										<div class="content">
+											<!--Article Body-->
+											<p>An omni-directional robot that can autonomously track objects.</p>
+										</div>
+									</a>
+								</article>
+								<!--Agilex Limo-->
+								<article class="style3">
+									<span class="image">
+										<!--Jpeg Image-->
+										<img src="images/Agilex Team Photo.jpg" alt="" />
+									</span>
+									<!--Link it sends users to when clicked on-->
+									<a href="Limo.html">
+										<!--Article Title-->
+										<h2>Agilex Limo</h2>
+										<div class="content">
+											<!--Article Body-->
+											<p>A ROS robot that can autonomously navigate to different waypoints.</p>
+										</div>
+									</a>
+								</article>
+							</section>
+						</div>
+					</div>
+
+				<!-- Footer -->
+					<footer id="footer">
+						<div class="inner">
+							<section>
+								<h2>Get in touch</h2>
+								<form method="post" action="#">
+									<div class="fields">
+										<div class="field half">
+											<input type="text" name="name" id="name" placeholder="Name" />
+										</div>
+										<div class="field half">
+											<input type="email" name="email" id="email" placeholder="Email" />
+										</div>
+										<div class="field">
+											<textarea name="message" id="message" placeholder="Message"></textarea>
+										</div>
+									</div>
+									<ul class="actions">
+										<li><input type="submit" value="Send" class="primary" /></li>
+									</ul>
+								</form>
+							</section>
+							<section>
+								<h2>Follow</h2>
+								<ul class="icons">
+									<li><a href="#" class="icon brands style2 fa-twitter"><span class="label">Twitter</span></a></li>
+									<li><a href="#" class="icon brands style2 fa-facebook-f"><span class="label">Facebook</span></a></li>
+									<li><a href="#" class="icon brands style2 fa-instagram"><span class="label">Instagram</span></a></li>
+									<li><a href="#" class="icon brands style2 fa-dribbble"><span class="label">Dribbble</span></a></li>
+									<li><a href="#" class="icon brands style2 fa-github"><span class="label">GitHub</span></a></li>
+									<li><a href="#" class="icon brands style2 fa-500px"><span class="label">500px</span></a></li>
+									<li><a href="#" class="icon solid style2 fa-phone"><span class="label">Phone</span></a></li>
+									<li><a href="#" class="icon solid style2 fa-envelope"><span class="label">Email</span></a></li>
+								</ul>
+							</section>
+							<ul class="copyright">
+								<li>&copy; Untitled. All rights reserved</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+							</ul>
+						</div>
+					</footer>
+
 			</div>
-			<li><a href="#web">Web Technology</a></li>
-			<li><a href="#program">C Programming</a></li>
-			<li><a href="#course">Courses</a></li>
-		</ul>
 
-		<div class="rightNav">
-			<input type="text" name="search" id="search">
-			<button class="btn btn-sm">Search</button>
-		</div>
-	</nav>
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
 
-	<section class="firstsection">
-		<div class="box-main">
-			<div class="firstHalf">
-				<h1 class="text-big" id="web">Web Technology</h1>
-				<p class="text-small">
-					HTML stands for HyperText Markup Language.
-					It is used to design web pages using a markup
-					language. HTML is the combination of Hypertext
-					and Markup language. Hypertext defines the
-					link between the web pages. A markup language
-					is used to define the text document within tag
-					which defines the structure of web pages.
-					HTML is a markup language that is used by the
-					browser to manipulate text, images, and other
-					content to display it in the required format.
-				</p>
-
-
-			</div>
-		</div>
-	</section>
-
-	<section class="secondsection">
-		<div class="box-main">
-			<div class="firstHalf">
-				<h1 class="text-big" id="program">
-					C Programming
-				</h1>
-				<p class="text-small">
-					C is a procedural programming language. It
-					was initially developed by Dennis Ritchie
-					as a system programming language to write
-					operating system. The main features of C
-					language include low-level access to memory,
-					simple set of keywords, and clean style,
-					these features make C language suitable for
-					system programming like operating system or
-					compiler development.
-				</p>
-
-
-			</div>
-		</div>
-	</section>
-
-	<section class="section">
-		<div class="paras">
-			<h1 class="sectionTag text-big">Java</h1>
-
-			<p class="sectionSubTag text-small">
-				Java has been one of the most popular
-				programming language for many years.
-				Java is Object Oriented. However it is
-				not considered as pure object oriented
-				as it provides support for primitive
-				data types (like int, char, etc) The
-				Java codes are first compiled into byte
-				code (machine independent code). Then
-				the byte code is run on Java Virtual
-				Machine (JVM) regardless of the
-				underlying architecture.
-			</p>
-
-
-		</div>
-
-		<div class="thumbnail">
-			<img src= "img.png" alt="laptop image">
-		</div>
-	</section>
-
-	<footer class="background">
-		<p class="text-footer">
-			Copyright ©-All rights are reserved
-		</p>
-
-
-	</footer>
-</body>
-
+	</body>
 </html>
