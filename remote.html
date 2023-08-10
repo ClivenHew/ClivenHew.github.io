@@ -58,7 +58,10 @@
 							</video>
 							<!--Body-->
 							<p>
-								The objective of this project was to enable users to directly control a robot and have the robot stop automatically when an obstacle is too close. To achieve this, an Arduino Mega 2560 is interfaced with a bluetooth module, ultrasonic sensors and H-bridge motor drivers. The Arduino will first receive a keystroke input from the user, verify if the path is clear, and then move accordingly. If the path is not clear, the Arduino will trigger an automatic stop to prevent collisions.
+								The objective of this project was to introduce myself to Robotics and learn about how a simple robot would function. This robot is comprised of TT motors, L298N, Arduino Mega 2560, HC-SR04 wireless sensors, and HC-06 bluetooth module. With these components, the user can use a bluetooth device to wirelessly control the robot.
+							</p>
+							<p>
+								The Arduino will first receive a keystroke input from the user through the HC-06 bluetooth module. The readings from the HC-SR04 wireless sensors will verify whether the path is clear. If the path ahead is clear, the Arduino will then send movement commands to the L298N. If the path is not clear, or an obstacle is fast approaching, the Arduino will trigger an automatic stop to prevent collisions.
 							</p>
 							<p>
 								The full codes and a detailed explanation of this project can be found in *my Github repository*.
