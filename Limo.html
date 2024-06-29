@@ -19,12 +19,6 @@
 				<!-- Header -->
 					<header id="header">
 						<div class="inner">
-
-							<!-- Logo -->
-								<a href="index.html" class="logo">
-									<span class="symbol"><img src="images/logo.png" alt="" /></span><span class="title">Phantom</span>
-								</a>
-
 							<!-- Nav -->
 								<nav>
 									<ul>
@@ -40,9 +34,6 @@
 						<h2>Menu</h2>
 						<ul>
 							<li><a href="index.html">Home</a></li>
-							<li><a href="remote.html">Remote</a></li>
-							<li><a href="LiteKit.html">Lite Kit</a></li>
-							<li><a href="Limo.html">Agilex Limo</a></li>
 							<li><a href="elements.html">Elements</a></li>
 						</ul>
 					</nav>
@@ -51,33 +42,60 @@
 					<div id="main">
 						<div class="inner">
 							<!--Header-->
-							<h1>Agilex Limo</h1>
+							<h1>Autonomous Waypoint Navigation</h1>
 							<!--Video-->
 							<video width="642" height="352" controls>
 								<source src = "videos/Agilex Limo Final Video.MOV" type = video/ogg>
 							</video>
 							<!--Body-->
-							<p>
-								The objective of this project was to ensure the Agilex Limo is capable of autonomous navigation between waypoints. To achieve this, our team set a pre-determined localized point on the global map to precisely determine its position and orientation within the environment. Users are then prompted to input their desired waypoints.
-							</p>
-							<p>
-								Using this localization information and the specified waypoints, the Agilex Limo employs a global path planner to generate a safe and efficient route from its current location to the designated destination. Throughout its journey, the robot continually updates the local path planner to dynamically navigate around obstacles, ensuring a smooth and obstacle-free trajectory.
-							</p>
-							<p>
-								For seamless execution, the entire navigation process relies on the Robot Operating System (ROS). The system sends the user-defined goal to the move_base node, a crucial component of the ROS navigation stack. The move_base node takes charge of coordinating the various navigation tasks, including localization, path planning, and obstacle avoidance.
-							</p>
-							<p>
-								The full codes and a detailed explanation of this project can be found in *my Github repository*.
-							</p>
+							<h3 style = "margin-top: 50px;">
+								Situation
+							</h3>
+							<ul style = "margin-top: -20px;">
+								<li>Learn how Robotic Operating System (ROS) can be used to develop robotic applications.</li>
+								<li>Learn how to use the navigation stack to navigate from waypoint A to B.</li>
+								<li>Challenge: Using the AgileX Limo, autonomously navigate around a prototype operational environment.</li>
+							</ul>
+							<h3>
+								Task
+							</h3>
+							<ul style = "margin-top: -20px;">
+								<li style = "margin-top: -20px;">Familiarise different concepts found in the navigation stack.</li>
+								<ul>
+									<li>Navigation stack setup</li>
+									<li>GMapping</li>
+									<li>Global Planner</li>
+									<li>Local Planner</li>
+									<li>Recovery Behaviours</li>
+								</ul>
+							</ul>
+							<h3>
+								Action
+							</h3>
+							<ul style = "margin-top: -20px;">
+								<li>Went through the wiki tutorial on ROS to setup and utilize navigation on TurtleBot3.</li>
+								<li>Used GMapping to create a map of the prototype environment.</li>
+								<li>Subscribed to essential topics to enable autonomous navigation on the AgileX Limo.</li>
+								<li>Used NavClient to send goals to the AgileX Limo.</li>
+								<li>Adjusted different parameters in the costmap yaml file to finetune obstacle avoidance.</li>
+							</ul>
+							<h3>
+								Result
+							</h3>
+							<ul style = "margin-top: -20px;">
+								<li>Demonstrated autonomous movement capability on the AgileX Limo.</li>
+								<li>Learnt how to setup ROS on robotic devices and utilize the navigation stack.</li>
+							</ul>
 						</div>
 					</div>
 
-				<!-- Footer -->
+					<!-- Footer -->
 					<footer id="footer">
 						<div class="inner">
+							<!--Email-->
 							<section>
 								<h2>Get in touch</h2>
-								<form method="post" action="#">
+								<form action="mailto:hewcliven@gmail.com" method="post" enctype="text/plain">
 									<div class="fields">
 										<div class="field half">
 											<input type="text" name="name" id="name" placeholder="Name" />
