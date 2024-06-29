@@ -3333,3 +3333,31 @@ input, select, textarea {
 			}
 
 		}
+
+
+/* Slideshow */
+#slideshow {
+	position: relative;
+	width: 100%; /* Adjust based on your needs */
+	height: 50vh; /* Adjust based on your needs */
+  }
+  
+  .slide {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
+  }
+
+  #slideshow button {
+    position: absolute; /* Position buttons absolutely within the slideshow */
+    bottom: -390px; /* Adjust as needed to position from the bottom */
+}
+
+#prev {
+    left: 0px; /* Position the Previous button on the left */
+}
+
+#next {
+    right: 0px; /* Position the Next button on the right */
+}

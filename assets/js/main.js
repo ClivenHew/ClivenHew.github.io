@@ -182,4 +182,27 @@
 
 			});
 
+			// Slideshow
+			let currentSlide = 0;
+			const slides = document.querySelectorAll('.slide');
+
+			function showSlide(index) {
+			slides.forEach((slide, i) => {
+				slide.style.display = i === index ? 'block' : 'none';
+			});
+			}
+
+			document.getElementById('prev').addEventListener('click', () => {
+			currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+			showSlide(currentSlide);
+			});
+
+			document.getElementById('next').addEventListener('click', () => {
+			currentSlide = (currentSlide + 1) % slides.length;
+			showSlide(currentSlide);
+			});
+
+			// Initially show the first slide
+			showSlide(currentSlide);
+
 })(jQuery);
