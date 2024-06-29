@@ -3336,6 +3336,9 @@ input, select, textarea {
 
 
 /* Slideshow */
+#slideshow-container {
+    position: relative;
+}
 #slideshow {
 	position: relative;
 	width: 100%; /* Adjust based on your needs */
@@ -3349,15 +3352,13 @@ input, select, textarea {
 	object-fit: contain;
   }
 
-  #slideshow button {
-    position: absolute; /* Position buttons absolutely within the slideshow */
-    bottom: -390px; /* Adjust as needed to position from the bottom */
+  .slideshow-controls {
+    text-align: center; /* Center the buttons below the slideshow */
+    margin-top: 20px; /* Adjust spacing between the slideshow and the buttons */
 }
 
-#prev {
-    left: 0px; /* Position the Previous button on the left */
-}
-
-#next {
-    right: 0px; /* Position the Next button on the right */
+#prev, #next {
+    position: relative; /* Adjust if needed */
+    display: inline-block; /* Display buttons inline */
+    z-index: 10;
 }
