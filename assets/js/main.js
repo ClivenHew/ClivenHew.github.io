@@ -249,6 +249,6 @@
 			});
 
 			// Initially show the first slide
-			showSlide2(currentSlide3);
+			showSlide3(currentSlide3);
 
 })(jQuery);
