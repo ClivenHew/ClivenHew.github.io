@@ -3351,7 +3351,7 @@ input, select, textarea {
   }
   #slideshow3 {
 	position: relative;
-	width: 85%; /* Adjust based on your needs */
+	width: 100%; /* Adjust based on your needs */
 	height: 50vh; /* Adjust based on your needs */
   }
   
