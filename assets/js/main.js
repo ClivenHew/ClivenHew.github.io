@@ -227,5 +227,28 @@
 
 			// Initially show the first slide
 			showSlide2(currentSlide2);
+		
+			// Slideshow 3
+			let currentSlide3 = 0;
+			const slides3 = document.querySelectorAll('.slide3');
+
+			function showSlide3(index) {
+				slides3.forEach((slide3, i) => {
+					slide3.style.display = i === index ? 'block' : 'none';
+				});
+			}
+
+			document.getElementById('prev3').addEventListener('click', () => {
+				currentSlide3 = (currentSlide3 - 1 + slides3.length) % slides3.length;
+				showSlide3(currentSlide3);
+			});
+
+			document.getElementById('next3').addEventListener('click', () => {
+				currentSlide3 = (currentSlide3 + 1) % slides3.length;
+				showSlide3(currentSlide3);
+			});
+
+			// Initially show the first slide
+			showSlide2(currentSlide3);
 
 })(jQuery);

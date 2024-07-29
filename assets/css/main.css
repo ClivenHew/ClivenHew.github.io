@@ -3349,6 +3349,11 @@ input, select, textarea {
 	width: 100%; /* Adjust based on your needs */
 	height: 50vh; /* Adjust based on your needs */
   }
+  #slideshow3 {
+	position: relative;
+	width: 100%; /* Adjust based on your needs */
+	height: 50vh; /* Adjust based on your needs */
+  }
   
   .slide {
 	position: absolute;
@@ -3358,6 +3363,13 @@ input, select, textarea {
   }
 
   .slide2 {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
+  }
+
+  .slide3 {
 	position: absolute;
 	width: 100%;
 	height: 100%;
@@ -3379,4 +3391,21 @@ input, select, textarea {
     position: relative; /* Adjust if needed */
     display: inline-block; /* Display buttons inline */
     z-index: 10;
+}
+
+#prev3, #next3 {
+    position: relative; /* Adjust if needed */
+    display: inline-block; /* Display buttons inline */
+    z-index: 10;
+}
+
+#flex-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start; /* Align items to the start of the container */
+}
+
+.flex-item {
+    flex: 1;
+    margin: 10px;
 }
