@@ -3411,3 +3411,86 @@ input, select, textarea {
 }
 @import url(fontawesome-all.min.css);
 @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,700,900");
+
+/* Divider */
+.divider {
+    width: 50px;
+    height: 2px;
+    background-color: #555;
+    margin: 10px auto 20px auto;
+    border-radius: 2px;
+}
+
+.skill-group {
+    margin-bottom: 3em;
+}
+
+.skill-group-title {
+    font-size: 0.95em;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    margin-bottom: 1em;
+    color: #555;
+}
+
+.skill-scale {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    column-gap: 1.5em;
+    margin-bottom: 0.8em;
+}
+
+.scale-spacer {
+    width: 100%;
+}
+
+.scale-labels {
+    position: relative;
+    height: 20px;
+    font-size: 0.85em;
+    color: #888;
+}
+
+.scale-labels span {
+    position: absolute;
+    transform: translateX(-50%);
+}
+
+.scale-labels span:nth-child(1) {
+    left: 33%;
+}
+
+.scale-labels span:nth-child(2) {
+    left: 66%;
+}
+
+.scale-labels span:nth-child(3) {
+    left: 100%;
+    transform: translateX(-100%);
+}
+
+.skill-row {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    column-gap: 1.5em;
+    align-items: center;
+    margin-bottom: 1em;
+}
+
+.skill-name {
+    font-size: 1em;
+    color: #444;
+    line-height: 1.4;
+}
+
+.skill-line {
+    position: relative;
+    height: 2px;
+    background: #cfcfcf;
+    width: 100%;
+}
+
+.skill-fill {
+    height: 2px;
+    background: #6a6a6a;
+}

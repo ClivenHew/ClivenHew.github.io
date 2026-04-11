@@ -42,50 +42,136 @@
 					<div id="main">
 						<div class="inner">
 							<!--Header-->
-							<h1>Autonomous Waypoint Navigation</h1>
+							<h1>AgileX Limo Pro: Autonomous Waypoint Navigation</h1>
 							<!--Video-->
 							<video width="642" height="352" controls>
 								<source src = "videos/Agilex Limo Final Video.MOV" type = video/ogg>
 							</video>
 							<!--Body-->
 							<h3 style = "margin-top: 50px;">
-								Situation
+								Background
 							</h3>
-							<ul style = "margin-top: -20px;">
-								<li>Learn how Robotic Operating System (ROS) can be used to develop robotic applications.</li>
-								<li>Learn how to use the navigation stack to navigate from waypoint A to B.</li>
-								<li>Challenge: Using the AgileX Limo, autonomously navigate around a prototype operational environment.</li>
-							</ul>
-							<h3>
-								Task
+							<p style = "margin-top: -20px;">
+								In a prototype operational environment of Sentosa, I programmed the AgileX Limo Pro to
+								autonomously navigate to different regions using waypoint-based navigation while avoiding
+								obstacles. The system was built using ROS and the ROS navigation stack. Destination 
+								locations were defined as mapped zones, and the robot was able to receive a user-selected 
+								goal and autonomously travel to that location. In addition to goal execution, the system 
+								included logic for waypoint chaining and a simple recovery mechanism to handle situations 
+								where the robot stopped moving during navigation.
+							</p>
+							<h3 style = "margin-top: 50px;">
+								Project Objectives
 							</h3>
-							<ul style = "margin-top: -20px;">
-								<li style = "margin-top: -20px;">Familiarise different concepts found in the navigation stack.</li>
-								<ul>
-									<li>Navigation stack setup</li>
-									<li>GMapping</li>
-									<li>Global Planner</li>
-									<li>Local Planner</li>
-									<li>Recovery Behaviours</li>
+								<ul style = "margin-top: -20px;">
+									<li>Generate a 2D map of the environment for autonomous navigation.</li>
+									<li>Enable the AgileX Limo Pro to navigate to predefined waypoints.</li>
+									<li>Allow operator to select destination goals through the command terminal.</li>
+									<li>Use ROS navigation tools to perform path planning and obstacle avoidance.</li>
 								</ul>
-							</ul>
 							<h3>
-								Action
+								System Implementation
 							</h3>
-							<ul style = "margin-top: -20px;">
-								<li>Went through the wiki tutorial on ROS to setup and utilize navigation on TurtleBot3.</li>
-								<li>Used GMapping to create a map of the prototype environment.</li>
-								<li>Subscribed to essential topics to enable autonomous navigation on the AgileX Limo.</li>
-								<li>Used NavClient to send goals to the AgileX Limo.</li>
-								<li>Adjusted different parameters in the costmap yaml file to finetune obstacle avoidance.</li>
-							</ul>
+							<p style = "margin-top: -20px;">
+								The AgileX Limo Pro navigation system uses the ROS navigation framework, taking in
+								information from the wheel odometry and sensor streams, and outputting velocity commands
+								based on the sensor information.
+								The system uses LiDAR as the primary sensor to provide distance measurements of the
+								surrounding environment through the <i>/scan</i> topic. These measurements are used by the 
+								Simultaneous Localization And Mapping (SLAM) to construct a 2D occupancy grid map 
+								while localizing its position within that map. The algorithm used to create the 
+								2D occupancy grid map is GMapping.
+							</p>
+							<p style = "margin-top: -20px;">
+								To interface with the navigation stack, a custom ROS node (setGoal.py) was created. The
+								SimpleActionClient (navclient) is used to communicate with the action server (move_base). 
+								The action server is used instead of publisher-subscriber method as navigation is a 
+								long running task and not instantaenous, and will feedback when the navigation is complete.
+								The <i>setGoal.py</i> node sends <i>MoveBaseGoal</i> messages containing the cartesian and 
+								orientation pose of the robot. The <i>navclient</i> waits for the <i>move_base</i> 
+								action server to respond if the robot has successfully reached the destination.
+							</p>
+							<p style = "margin-top: -20px;">
+								A second custom ROS node (isMoving.py) was created to monitor the robot motion during 
+								navigation. This node subscribes to the <i>/cmd_vel</i> topic to observe the robot's commanded 
+								velocities to determine if the robot is moving. The node also subscribes to the <i>/onTheMove</i>
+								topic to detect if a navigation goal is currently active. Using these 2 topics, the node
+								can determine if the robot is expected to be moving but is instead stationary.
+							</p>
+							<p style = "margin-top: -20px;">
+								The AgileX Limo Pro has multiple movement types, which are the Ackermann Steering Mode,
+								Mecanum Wheel Mode, 4-Wheel Differential Mode, and Tracked Mode. As there are steep slopes
+								of 15 degrees at certain regions of the operational environment, the Tracked Mode is used
+								to provide high traction. Furthermore, this mode allows the robot to change its orientation
+								on the spot, allowing it to navigate around tight corners.
+							</p>
+							<p style = "margin-top: -20px;">
+								Finally, the navigation system operates on a set of predefined regions within the environment. 
+								Each region is represented as a fixed target pose consisting of the Cartesian position and orientation
+								of the robot in the 2D occupancy grid map. When the user selects a region, the target pose is sent 
+								to <i>move_base</i> action server through the <i>navclient</i>. The global planner computes a fixed 
+								path to the goal, while the local planner continuously adjusts the robot's motion based on sensor data
+								to avoid obstacles.
+							</p>
 							<h3>
-								Result
+								Challenges and Solutions
 							</h3>
-							<ul style = "margin-top: -20px;">
-								<li>Demonstrated autonomous movement capability on the AgileX Limo.</li>
-								<li>Learnt how to setup ROS on robotic devices and utilize the navigation stack.</li>
-							</ul>
+							<h4>
+								Incorrect CostMap Configuration (Inflation Radius)
+							</h4>
+							<p style = "margin-top: -20px;">
+								One of the main challenges encountered during development was unreliable obstacle avoidance, 
+								where the robot would occasionally collide with obstacles despite the use of the ROS navigation stack. 
+								This issue was traced to improper settings of the costmap configuration, which is responsible for 
+								representing obstacles and defining safe navigation boundaries around the robot.
+							</p>
+							<p style = "margin-top: -20px;">
+								The costmap is a grid-based representation of the environment used by the ROS navigation stack for 
+								path planning and obstacle avoidance. It divides the 2D occupancy grid map into discrete cells, where each 
+								cell is assigned a cost value representing how safe it is for the robot to occupy that space. 
+								Free space is assigned a low cost, while obstacles and areas close to obstacles are assigned higher 
+								cost values.
+							</p>
+							<p style = "margin-top: -20px;">
+								Both the global planner and the local planner rely on the costmap. The global planner uses it to compute a 
+								collision-free path from the robot’s current position to the goal, while the local planner continuously 
+								references the costmap to adjust the robot’s motion in real time. As new sensor data is received, the 
+								costmap updates, allowing the local planner to respond dynamically to obstacles that were not present in the 
+								original map.
+							</p>
+							<p style = "margin-top: -20px;">
+								When the inflation radius is set too low, the surrounding cells around the obstacles is not marked as high cost
+								to create a safety buffer. As a result, the planner generates the path close to obstacles as those cells are 
+								assigned relatively low cost values and appears as collision-free. While the path is considered collision-free 
+								within the costmap representation, they are unsafe in the physical environment due to insufficient clearance, 
+								leading to collisions.
+							</p>
+							<p style = "margin-top: -20px;">
+								This mismatch between the costmap representation and the physical environment is the reason why improper costmap 
+								configuration results in collisions.This issue is resolved by performing multiple trial runs in the operational 
+								environment while fine-tuning the inflation radius value in the costmap parameters yaml file to expand obstacle
+								boundaries to ensure the planner maintains a safe distance from obstacles during navigation.
+							</p>
+							<h3>
+								Conclusion
+							</h3>
+							<p style = "margin-top: -20px;">
+								The AgileX Limo Pro navigation system successfully achieved autonomous navigation within the operational environment, 
+								allowing the robot to move between predefined regions while performing real-time obstacle avoidance. By integrating 
+								SLAM-based mapping, global and local path planning, and costmap-based obstacle representation, the system was able 
+								to generate navigation paths to the target pose and adapt dynamically to changes in the environment.
+							</p>
+							<p style = "margin-top: -20px;">
+								To achieve this, I developed the navigation framework using ROS, custom goal management node (setGoal.py) that 
+								interfaces with the <i>move_base</i> action server through the SimpleActionClient. This enabled user-controlled, waypoint-based 
+								navigation between predefined regions. In addition, I developed a motion monitoring node (isMoving.py) that detects 
+								stalled movement using velocity feedback from /cmd_vel and triggers a recovery behaviour by issuing reverse velocity 
+								commands when necessary.
+							</p>
+							<p style = "margin-top: -20px;">
+								This project demonstrates my ability to design and implement autonomous robotic systems using ROS, as well as 
+								diagnose and resolve practical issues such as costmap misconfiguration that directly impact system performance.
+							</p>
 						</div>
 					</div>
 
