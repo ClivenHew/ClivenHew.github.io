@@ -1,0 +1,315 @@
+<!DOCTYPE HTML>
+<!--
+	Phantom by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Generic - Phantom by HTML5 UP</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+		<!-- Wrapper -->
+			<div id="wrapper">
+				<!-- Header -->
+					<header id="header">
+						<div class="inner">
+							<!-- Nav -->
+								<nav>
+									<ul>
+										<li><a href="#menu">Menu</a></li>
+									</ul>
+								</nav>
+						</div>
+					</header>
+
+				<!-- Menu -->
+					<nav id="menu">
+						<h2>Menu</h2>
+						<ul>
+							<li><a href="index.html">Home</a></li>
+							<li><a href="elements.html">Elements</a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+							<!--Header-->
+							<h1>Automated Box Kitting for High Mix, High Volume Warehouse Operations</h1>
+                            <div id="slideshow-container">
+                                <div id="slideshow1">
+                                    <video class="slide1" width="642" height="352" controls style="display: none;">
+                                        <source src="videos/Duo Kitting.mp4" type="video/mp4">
+                                    </video>
+
+                                    <img src="images/Multi-Product Kitting Slides/Slide2.JPG" class="slide1" style="display: none;">
+                                    <img src="images/Multi-Product Kitting Slides/Slide3.JPG" class="slide1" style="display: none;">
+                                    <img src="images/Multi-Product Kitting Slides/Slide4.JPG" class="slide1" style="display: none;">
+                                    <img src="images/Multi-Product Kitting Slides/Slide5.JPG" class="slide1" style="display: none;">
+                                    <img src="images/Multi-Product Kitting Slides/Slide6.JPG" class="slide1" style="display: none;">
+                                    <img src="images/Multi-Product Kitting Slides/Slide7.JPG" class="slide1" style="display: none;">
+                                    <img src="images/Multi-Product Kitting Slides/Slide8.JPG" class="slide1" style="display: none;">
+                                    <img src="images/Multi-Product Kitting Slides/Slide9.JPG" class="slide1" style="display: none;">
+                                    <img src="images/Multi-Product Kitting Slides/Slide10.JPG" class="slide1" style="display: none;">
+                                    <img src="images/Multi-Product Kitting Slides/Slide11.JPG" class="slide1" style="display: none;">
+                                    <img src="images/Multi-Product Kitting Slides/Slide12.JPG" class="slide1" style="display: none;">
+                                    <img src="images/Multi-Product Kitting Slides/Slide13.JPG" class="slide1" style="display: none;">
+                                    <img src="images/Multi-Product Kitting Slides/Slide14.JPG" class="slide1" style="display: none;">
+                                    <img src="images/Multi-Product Kitting Slides/Slide15.JPG" class="slide1" style="display: none;">
+                                    <img src="images/Multi-Product Kitting Slides/Slide16.JPG" class="slide1" style="display: none;">
+                                    <img src="images/Multi-Product Kitting Slides/Slide17.JPG" class="slide1" style="display: none;">
+                                    <img src="images/Multi-Product Kitting Slides/Slide21.JPG" class="slide1" style="display: none;">
+                                    <img src="images/Multi-Product Kitting Slides/Slide22.JPG" class="slide1" style="display: none;">
+                                    <img src="images/Multi-Product Kitting Slides/Slide23.JPG" class="slide1" style="display: none;">
+                                </div>
+
+                                <div class="slideshow-controls">
+                                    <button id="prev1">Previous</button>
+                                    <button id="next1">Next</button>
+                                </div>
+                            </div>
+							<!--Body-->
+							<h3 style = "margin-top: 50px;">
+								Background
+							</h3>
+							<p style = "margin-top: -20px;">
+                                Warehousing operations remain heavily dependent on manual kitting processes, where operators are 
+                                required to perform repetitive tasks such as box preparation, SKU handling, and product insertion. These 
+                                manual processes are labour-intensive, difficult to scale, and prone to human error, resulting in 
+                                inconsistent throughput and reduced operational efficiency.
+							</p>
+                            <p style = "margin-top: -20px;">
+                                In high-mix environments, where product dimensions and kitting configurations frequently change, 
+                                conventional automation systems are often unsuitable due to their reliance on fixed tooling and predefined 
+                                motion sequences. This lack of flexibility limits their ability to adapt to varying product requirements 
+                                without significant reconfiguration or downtime. The objective was to develop a flexible automation 
+                                solution capable of supporting multiple product types and kitting configurations while maintaining high 
+                                throughput, positional accuracy, and reliable system operation.
+                            </p>
+                            <p style = "margin-top: -20px;">
+                                In this project, I was responsible for the design and implementation of the control system, robot 
+                                programming, and overall system integration for an automated multi-product box kitting system within a 
+                                constrained workspace. This includes developing PLC control logic using CODESYS, programming the 
+                                KUKA SCARA manipulator for pick-and-place operations, and integrating industrial communication protocols 
+                                such as Profinet, Modbus TCP, and IO-Link to coordinate the interaction between mechanical subsystems, 
+                                sensors, actuators, and the manipulator.
+                            </p>
+							<h3 style = "margin-top: 50px;">
+								Project Objectives
+							</h3>
+								<ul style = "margin-top: -20px;">
+									<li> Develop a PLC-based control system using <b>CODESYS</b> to coordinate the kitting process.</li>
+									<li> Program the <b>KUKA SCARA manipulator</b> for high-speed pick-and-place operations (&lt; 4s cycle time).</li>
+									<li> Enable flexible operation across <b>8 product types</b> and <b>3 kitting configurations</b>.</li>
+									<li>Achieve <b>≥ 900 boxes/hour</b> throughput with <b>&lt; 0.04% error rate</b>.</li>
+								</ul>
+							<h3>
+								System Implementation
+							</h3>
+							<p style = "margin-top: -20px;">
+                                The automated box kitting system is implemented using a PLC-based control architecture developed in the 
+                                CODESYS platform, integrating multiple subsystems including the Box Alignment System, SKU Alignment System, 
+                                and the KUKA SCARA robot. Communication between controllers and devices is achieved using industrial protocols 
+                                such as Profinet, Modbus TCP, IO-Link, and digital I/O to ensure reliable real-time operation.
+							</p>
+							<p style = "margin-top: -20px;">
+                                The system follows a hierarchical control structure. The HMI with an integrated PLC functions as the master 
+                                controller, coordinating the overall kitting sequence, while dedicated PLCs are assigned to the Box Alignment 
+                                and SKU Alignment subsystems to handle low-level control of sensors and pneumatic actuators. This distributed 
+                                approach reduces computational load on the master controller and ensures deterministic execution of real-time 
+                                tasks.
+							</p>
+							<p style = "margin-top: -20px;">
+                                PLC programs are developed using Structured Text (ST) in CODESYS. Each subsystem PLC executes sequential 
+                                logic to control actuator timing based on sensor feedback. Photoelectric sensors are interfaced using digital 
+                                inputs, while pneumatic actuators are controlled through digital outputs connected to solenoid valves. The 
+                                logic ensures that only one box and the correct number of SKUs are positioned at their respective stations 
+                                before allowing the kitting process to proceed.
+							</p>
+                            <p style = "margin-top: -20px;">
+                                Communication between the master controller and subsystem PLCs is implemented using Profinet, allowing fast 
+                                and deterministic exchange of status signals such as box readiness and SKU readiness. These signals are used 
+                                to synchronise subsystem operations and trigger the pick-and-place sequence only when all conditions are met.
+                            </p>
+                            <p style = "margin-top: -20px;">
+                                The KUKA SCARA robot is integrated using Modbus TCP communication. The master controller transmits key 
+                                parameters such as kitting configuration, SKU dimensions, box dimensions, and readiness signals to the robot. 
+                                The robot operates in a continuous loop, waiting for these signals before executing pick-and-place actions.
+                            </p>
+                            <p style = "margin-top: -20px;">
+                                The electric parallel gripper is controlled using an IO-Link interface, enabling bidirectional communication 
+                                between the PLC and the gripper. Control commands such as open and close positions are transmitted as 
+                                WORD values, while feedback signals are received to verify gripping status. A calibration model is implemented 
+                                in the PLC to convert SKU dimensions into gripper control values.
+                            </p>
+                            <p style = "margin-top: -20px;">
+                                A waypoint compensation algorithm is implemented within the control logic to dynamically adjust robot 
+                                positions based on SKU and box dimensions. Instead of using fixed waypoints for each product type, the 
+                                final robot position is computed by combining a base programmed waypoint with calculated offsets and 
+                                user-defined corrections. This allows the system to handle multiple product configurations without requiring 
+                                separate robot programs.
+                            </p>
+                            <p style = "margin-top: -20px;">
+                                During operation, the subsystem PLCs executes a sequential workflow. Once the box and SKU are detected at their 
+                                respective stations, a ready signal is sent to the robot. The robot moves to the pick position, activates 
+                                the gripper to grasp the SKU, lifts the product, and moves to the kitting station. The product is then 
+                                inserted into the box, and the gripper is released. Upon completion, the robot sends a completion signal back 
+                                to the master controller, allowing the next cycle to begin.
+                            </p>
+                            <p style = "margin-top: -20px;">
+                                Safety is handled using a dedicated Safety PLC, which operates independently of the control logic. The 
+                                emergency stop is hardwired to the robot through relay outputs, ensuring immediate shutdown of robot 
+                                motion regardless of software state. The safety status is also transmitted to the master controller to 
+                                halt system operation when triggered.
+                            </p>
+							<h3>
+								Challenges and Solutions
+							</h3>
+							<h4 style = "margin-top: -20px;">
+								Mechanical Tolerances
+							</h4>
+							<p style = "margin-top: -20px;">
+                                One of the key challenges encountered during system implementation was the accumulation of mechanical 
+                                tolerances arising from manual adjustments of guide rails and alignment mechanisms in both the Box Alignment 
+                                System and SKU Alignment System. These adjustments are necessary to accommodate different box and SKU 
+                                dimensions, but introduce small positional deviations from the ideal reference points required for accurate 
+                                kitting.
+							</p>
+							<p style = "margin-top: -20px;">
+                                Although the system is designed to constrain boxes and SKUs to fixed reference positions using pneumatic 
+                                actuators and mechanical stoppers, variations in setup such as slight misalignment of guide rails, uneven 
+                                contact surfaces, and tolerance stack-up across mechanical components result in positional offsets at 
+                                the pick and placement locations. These deviations, while small, lead to collisions during the insertion process.
+							</p>
+							<p style = "margin-top: -20px;">
+                                To address this issue, a user-defined waypoint offset mechanism was implemented within the robot control logic. 
+                                This allows fine-tuning of the robot’s pick and place positions along the X, Y, and Z axes. The offsets can be 
+                                adjusted in increments of 0.01 mm through the HMI interface, enabling precise compensation for mechanical deviations 
+                                without modifying the KUKA robot program.
+							</p>
+							<p style = "margin-top: -20px;">
+                                The final robot position is computed as the sum of the programmed waypoint, calculated compensation based on 
+                                product dimensions, and the user-defined offset. This approach maintains system flexibility while ensuring 
+                                high positional accuracy, allowing the system to consistently perform kitting operations despite variations 
+                                introduced during mechanical setup.
+							</p>
+							<h3>
+								Conclusion
+							</h3>
+							<p style = "margin-top: -20px;">
+                                The automated box kitting system was successfully developed and integrated to meet the requirements of a 
+                                high-mix warehouse environment. The system achieved a cycle time of 3 seconds per pick-and-place operation and 
+                                a throughput of up to 1200 boxes per hour for single and duo kitting configurations, while maintaining 
+                                consistent and reliable operation during testing.
+							</p>
+							<p style = "margin-top: -20px;">
+                                Throughout this project, I was responsible for the development of the PLC control logic using CODESYS, 
+                                system integration between multiple subsystems, and the implementation of industrial communication protocols 
+                                including Profinet, Modbus TCP, and IO-Link. I also developed key algorithms such as gripper parameter 
+                                calculation and waypoint compensation, enabling the system to operate flexibly across different kitting 
+                                configurations.
+							</p>
+							<p style = "margin-top: -20px;">
+                                This project demonstrates my ability to design and implement industrial automation systems, perform 
+                                system-level integration, and develop practical engineering solutions to address real-world constraints such 
+                                as mechanical tolerances, timing synchronisation, and system scalability.
+							</p>
+						</div>
+					</div>
+
+					<!-- Footer -->
+					<footer id="footer">
+						<div class="inner">
+							<!--Email-->
+							<section>
+								<h2>Get in touch</h2>
+								<form action="mailto:hewcliven@gmail.com" method="post" enctype="text/plain">
+									<div class="fields">
+										<div class="field half">
+											<input type="text" name="name" id="name" placeholder="Name" />
+										</div>
+										<div class="field half">
+											<input type="email" name="email" id="email" placeholder="Email" />
+										</div>
+										<div class="field">
+											<textarea name="message" id="message" placeholder="Message"></textarea>
+										</div>
+									</div>
+									<ul class="actions">
+										<li><input type="submit" value="Send" class="primary" /></li>
+									</ul>
+								</form>
+							</section>
+							<section>
+								<h2>Follow</h2>
+								<ul class="icons">
+									<li><a href="#" class="icon brands style2 fa-twitter"><span class="label">Twitter</span></a></li>
+									<li><a href="#" class="icon brands style2 fa-facebook-f"><span class="label">Facebook</span></a></li>
+									<li><a href="#" class="icon brands style2 fa-instagram"><span class="label">Instagram</span></a></li>
+									<li><a href="#" class="icon brands style2 fa-dribbble"><span class="label">Dribbble</span></a></li>
+									<li><a href="#" class="icon brands style2 fa-github"><span class="label">GitHub</span></a></li>
+									<li><a href="#" class="icon brands style2 fa-500px"><span class="label">500px</span></a></li>
+									<li><a href="#" class="icon solid style2 fa-phone"><span class="label">Phone</span></a></li>
+									<li><a href="#" class="icon solid style2 fa-envelope"><span class="label">Email</span></a></li>
+								</ul>
+							</section>
+							<ul class="copyright">
+								<li>&copy; Untitled. All rights reserved</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+							</ul>
+						</div>
+					</footer>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+            <script>
+                function setupSlideshow(slideshowId, slideClass, prevBtnId, nextBtnId) {
+                    let index = 0;
+                    const slideshow = document.getElementById(slideshowId);
+                    const slides = slideshow.getElementsByClassName(slideClass);
+                    const prevBtn = document.getElementById(prevBtnId);
+                    const nextBtn = document.getElementById(nextBtnId);
+
+                    function showSlide(n) {
+                        for (let i = 0; i < slides.length; i++) {
+                            slides[i].style.display = "none";
+
+                            if (slides[i].tagName === "VIDEO") {
+                                slides[i].pause();
+                            }
+                        }
+
+                        if (n >= slides.length) index = 0;
+                        if (n < 0) index = slides.length - 1;
+
+                        slides[index].style.display = "block";
+                    }
+
+                    prevBtn.addEventListener("click", function () {
+                        index--;
+                        showSlide(index);
+                    });
+
+                    nextBtn.addEventListener("click", function () {
+                        index++;
+                        showSlide(index);
+                    });
+
+                    showSlide(index);
+                }
+
+                setupSlideshow("slideshow1", "slide1", "prev1", "next1");
+                </script>
+	</body>
+</html>
