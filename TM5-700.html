@@ -47,61 +47,110 @@
 							<video width="642" height="352" controls>
 								<source src = "videos/Automated Picking System Video.mp4" type = video/ogg>
 							</video>
-							<div id = "slideshow-container">
-								<div id="slideshow">
-									<img src="images/Automated Picking Station Slides/Slide10.JPG" class="slide" style="display: block;">
-									<img src="images/Automated Picking Station Slides/Slide11.JPG" class="slide" style="display: block;">
-									<img src="images/Automated Picking Station Slides/Slide12.JPG" class="slide" style="display: block;">
-									<img src="images/Automated Picking Station Slides/Slide13.JPG" class="slide" style="display: block;">
-									<img src="images/Automated Picking Station Slides/Slide14.JPG" class="slide" style="display: block;">
-								</div>
-								<div class="slideshow-controls">
-									<button id="prev">Previous</button>
-									<button id="next">Next</button>
-								</div>
-							</div>
 							<!--Body-->
 							<h3 style = "margin-top: 100px;">
-								Situation
+								Background
+							</h3>
+							<p style = "margin-top: -20px;">
+								In a prototype warehouse kitting setup, I programmed the TM5-700 collaborative robot to perform 
+								automated pick-and-place operations for different products identified by the Intel Realsense Camera. 
+								The manipulator is required to detect target items based on colour, pick them using a suction gripper, 
+								and place them into an outbound box for kitting. 
+							</p>
+							<h3>
+								Project Objectives
 							</h3>
 							<ul style = "margin-top: -20px;">
-								<li>Logistics warehouses rely on manual labour for order picking.</li>
-								<li>There are disadvantages towards manual labour.</li>
-								<ul>
-									<li>Human error.</li>
-									<li>High labour costs.</li>
-									<li>Inability to scale operations efficiently.</li>
-									<li>Risks of accidents and injuries.</li>
-								</ul>
-								<li style = "margin-top: -30px;">Challenge: Prototype an automated solution to increase order picking rates.</li>
+								<li style = "margin-top: -20px;">Enable the TM5-700 manipulator to perform automated pick-and-place
+									operations for warehouse kitting.
+								</li>
+								<li>Integrate the Intel Realsense Camera to detect target products for picking.</li>
+								<li>Control the suction gripper through digital output signals.</li>
 							</ul>
 							<h3>
-								Task
+								System Implementation
 							</h3>
-							<ul style = "margin-top: -20px;">
-								<li style = "margin-top: -20px;">Elicit stakeholder needs and requirements for the prototyping process.</li>
-								<li>Transform stakeholder requirements into design output specifications.</li>
-								<li>Integrate identified subsystems into prototype solution.</li>
-								<li>Design the logic flow for the prototype solution.</li>
-								<li>Demonstrate the feasibility of the prototype solution.</li>
-							</ul>
+							<p style = "margin-top: -20px;">
+								The TM5-700 manipulator is controlled through the TM ROS driver, which provides service-based communication
+								with the TMFlow controller. The Intel Realsense camera is interfaced with the manipulator through USB communication 
+								to provide depth measurements for the vertical approach during pick-and-place operations and RGB readings 
+								for colour classification. The Robotiq suction gripper is "plug and play" compatible with the TM5-700 
+								manipulator and is activated through digital outputs.
+							</p>
+							<p style = "margin-top: -20px;">
+								3 main ROS service clients are used: <i>SetPositions</i> for motion control, <i>SetIO</i> for digital output
+								control of the suction gripper, and <i>SendScript</i> for executing TMFlow script commands. Service-client
+								communication is used instead of publisher-subscriber as the request-response mechanism ensures each command
+								has finished executing before the next action is performed and prevents conflicting robot actions.
+							</p>
+							<p style = "margin-top: -20px;">
+								A custom ROS node <i>command_publisher</i> is created to subscribe to the camera topics and to control the 
+								overall system execution. The <i>RGB</i> topic returns a String datatype from the colour-based detection 
+								results.  The <i>average_depth</i> topic returns a Float datatype that provides depth measurements from the 
+								center of the camera to the target. The node publishes to the <i>command</i> topic that informs the robot
+								execution node <i>move</i> on the actions to be performed for the TM5-700. The node subscribes to the 
+								<i>feedback</i> topic that returns a String datatype indicating if the TM5-700 manipulator is currently 
+								executing an action or has completed it. 
+							</p>
+							<p style = "margin-top: -20px;">
+								The robot execution is controlled by a custom ROS node <i>move</i>. Based on the value subscribed from the <i>command</i> 
+								topic, the node prepares the service request. The node first subscribes to the <i>tool_pose</i> topic to 
+								obtain the tool position and orientation. The quaternion orientation is converted into Euler angles
+								to allow Cartesian point-to-point motion commands. The Cartesian coordinates are modified and sent 
+								through the <i>SetPositions</i> service, which moves the TM5-700 tool to the modified coordinates.
+								After the service call is completed, the <i>move</i> node publishes to the <i>feedback</i> topic that 
+								the TM5-700 manipulator has finished the action.
+							</p>
+							<p style = "margin-top: -20px;">
+								During the pick stage, the TM5-700 determines if the object is the intended product for the kitting process
+								using the RGB readings. If it is, the required Z-axis displacement is calculated using the depth measurement.
+								A fixed negatives Y-axis offset is applied to compensate for the physical displacement between the camera and the 
+								suction tool. Once the manipulator is in place with the tool physically on the product,
+								the suction gripper is activated using the <i>SetIO</i> service to attach the product.
+							</p>
+							<p style = "margin-top: -20px;">
+								After picking, the manipulator lifts the product by reversing the Z-axis motion and then translating across
+								the X-axis towards the outbound lane. For placement, the TM5-700 lowers the product using the same depth-based
+								approach. The suction gripper is then deactivated to release the product. Finally, the <i>SendScript</i> service 
+								is used to send a <i>ScriptExit()</i> command. This is required to ensure that the TM5-700 exits listen 
+								mode on the TMFlow to end the current script execution cycle and to be ready for the next pick-and-place 
+								operation.
+							</p>
 							<h3>
-								Action
+								Challenges and Solutions
 							</h3>
-							<ul style = "margin-top: -20px;">
-								<li>Conducted interviews with stakeholders to identify needs and requirements.</li>
-								<li>Created CAD drawings based on stakeholder requirements to identify necessary subsystems to realise prototype solution.</li>
-								<li>Assembled custom mounts for depth camera and suction cup for the TM5-700 collaborative arm.</li>
-								<li>Designed the logic flow for the prototype solution using flowcharts.</li>
-								<li>Conducted demonstrations on the TM5-700 under specific operational conditions to showcase prototype solution.</li>
-							</ul>
+							<h4>Compensation between Camera and Tool</h4>
+							<p style = "margin-top: -20px;">
+								One of the main challenges encountered during the development of the kitting system was ensuring 
+								reliable alignment between the camera detection and the physical position of the suction gripper. The depth 
+								readings are obtained from the Intel RealSense camera, which is mounted at an offset relative to the 
+								end effector. As a result, the detected object position does not directly correspond to the tool center 
+								point of the manipulator. This was addressed by introducing a fixed negative Y-axis offset during the 
+								pick and place stages to compensate for the physical displacement between the camera and the suction tool. 
+								This ensured that the tool is centered on the product before activating the suction gripper.
+							</p>
 							<h3>
-								Result
+								Conclusion
 							</h3>
-							<ul style = "margin-top: -20px;">
-								<li>Met stakeholder expectations for order picking rates.</li>
-								<li>Met stakeholder expectations for picking products that can be found in logistics warehouses.</li>
-							</ul>
+							<p style = "margin-top: -20px;">
+								The kitting system successfully achieved automated pick-and-place operations within the defined workspace, 
+								allowing the TM5-700 manipulator to identify, pick, and place different products using RGB-based detection 
+								and depth guided positioning. By integrating vision sensing, service-based robot control, and coordinated 
+								command execution, the system was able to perform consistent and reliable kitting operations.
+							</p>
+							<p style = "margin-top: -20px;">
+								To achieve this, I implemented the TM ROS driver to control the TM5-700 externally. The command node 
+								(command_publisher) and a robot execution node (move) interfaces directly with the TM ROS driver through 
+								service clients. This enabled command driven manipulation using <i>SetPositions</i>, <i>SetIO</i>, and 
+								<i>SendScript</i>, enabling execution of manipulator motion and suction. In addition, I implemented 
+								camera to tool offset compensation to ensure picking accuracy, as well as a feedback-based 
+								sequencing mechanism through the publisher-subscriber method to prevent conflicting robot commands.
+							</p>
+							<p style = "margin-top: -20px;">
+								This project demonstrates my ability to design and implement industrial robotic automation systems using 
+								ROS 2, as well as integrate vision sensors, suction-based end-effectors, and robotic manipulators into an 
+								automation system that meets project requirements.
+							</p>
 						</div>
 					</div>
 

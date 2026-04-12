@@ -96,7 +96,8 @@
 								navigation. This node subscribes to the <i>/cmd_vel</i> topic to observe the robot's commanded 
 								velocities to determine if the robot is moving. The node also subscribes to the <i>/onTheMove</i>
 								topic to detect if a navigation goal is currently active. Using these 2 topics, the node
-								can determine if the robot is expected to be moving but is instead stationary.
+								can determine if the robot is expected to be moving but is instead stationary. If stalled movement
+								is detected, the robot is made to reverse for 3 seconds before retrying autonomous navigation.
 							</p>
 							<p style = "margin-top: -20px;">
 								The AgileX Limo Pro has multiple movement types, which are the Ackermann Steering Mode,
@@ -165,7 +166,7 @@
 								To achieve this, I developed the navigation framework using ROS, custom goal management node (setGoal.py) that 
 								interfaces with the <i>move_base</i> action server through the SimpleActionClient. This enabled user-controlled, waypoint-based 
 								navigation between predefined regions. In addition, I developed a motion monitoring node (isMoving.py) that detects 
-								stalled movement using velocity feedback from /cmd_vel and triggers a recovery behaviour by issuing reverse velocity 
+								stalled movement using velocity feedback from <i>/cmd_vel</i> and triggers a recovery behaviour by issuing reverse velocity 
 								commands when necessary.
 							</p>
 							<p style = "margin-top: -20px;">
